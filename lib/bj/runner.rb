@@ -185,7 +185,7 @@ class Bj
               job = thread = stdout = stderr = nil
 
               Bj.transaction(options) do
-                now = Time.now
+                now = Time.now.utc
 
                 job = Bj::Table::Job.find :first,
                                           :conditions => ["state = ? and submitted_at <= ?", "pending", now],
